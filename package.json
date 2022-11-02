@@ -1,0 +1,26 @@
+{
+  "private": true,
+  "description": "A repository for tracking my Spacemacs configuration.",
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CS-Schmidt/.spacemacs.d.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CS-Schmidt/.spacemacs.d/issues"
+  },
+  "homepage": "https://github.com/CS-Schmidt/.spacemacs.d#readme",
+  "author": {
+    "name": "Ethan Schmidt",
+    "email": "es.schmidt.cs@gmail.com",
+    "url": "https://www.linkedin.com/in/cs-schmidt/"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.2.0",
+    "@commitlint/config-conventional": "^17.2.0",
+    "husky": "^8.0.1"
+  }
+}

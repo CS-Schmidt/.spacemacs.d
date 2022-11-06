@@ -681,3 +681,20 @@ See the header of this file for more information."
   (spacemacs/load-spacemacs-env)
 )
 #+END_SRC
+
+* User Initialization
+--------------------------------------------------------------------------------
+The ~dotspacemacs/user-init~ function is called immeadiately after
+~dotspacemacs/init~, before layer configuration. In general, this function would
+be used to set variables before packages are loaded. But, if you are unsure, try
+setting them in ~dotspacemacs/user-config~ first.
+
+#+BEGIN_SRC elisp
+(defun dotspacemacs/user-init ()
+  "Initialization for user code:
+This function is called immediately after `dotspacemacs/init', before layer
+configuration.It is mostly for variables that should be set before packages are
+loaded. If you are unsure, try setting them in `dotspacemacs/user-config'
+first."
+)
+#+END_SRC

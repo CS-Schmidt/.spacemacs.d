@@ -663,3 +663,21 @@ options for managing packages within Spacemacs.
   ;; A list of packages that will not be installed and loaded.
   dotspacemacs-excluded-packages '()))
 #+END_SRC
+
+* User Environment
+--------------------------------------------------------------------------------
+The ~dotspacemacs/user-env~ function defines the environment variables for your
+Emacs session. By default it calls ~spacemacs/load-spacemacs-env~ which loads the
+environment variables declared in ~~/.spacemacs.env~ or
+~/.spacemacs.d/.spacemacs.env~.
+
+#+BEGIN_SRC elisp
+(defun dotspacemacs/user-env ()
+  "Environment variables setup.
+This function defines the environment variables for your Emacs session. By
+default it calls `spacemacs/load-spacemacs-env' which loads the environment
+variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
+See the header of this file for more information."
+  (spacemacs/load-spacemacs-env)
+)
+#+END_SRC

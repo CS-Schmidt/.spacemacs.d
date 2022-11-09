@@ -713,3 +713,19 @@ This function is called only while dumping Spacemacs configuration. You can
 dump."
 )
 #+END_SRC
+
+* User Configuration
+--------------------------------------------------------------------------------
+The ~dotspacemacs/user-config~ function is called at the very end of Spacemacs
+startup, after layer configuration. The majority of custom configuration should
+be placed here, with the exception of variables that should be set before
+packages are loaded, those go in the ~dotspacemacs/user-init~ function.
+
+#+BEGIN_SRC elisp
+(defun dotspacemacs/user-config ()
+  "Configuration for user code:
+This function is called at the very end of Spacemacs startup, after layer
+configuration. Put your configuration code here, except for variables that
+should be set before packages are loaded."
+)
+#+END_SRC

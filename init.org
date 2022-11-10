@@ -67,6 +67,12 @@ settings related to the home buffer and startup.
   ;; (default t)
   dotspacemacs-show-startup-list-numbers t
 
+  ;; If non-nil, show file icons for entries and headings on Spacemacs home
+  ;; buffer. This has no effect in terminal or if "all-the-icons" package or the
+  ;; font is not installed.
+  ;; (default nil)
+  dotspacemacs-startup-buffer-show-icons t
+
   ;; List of items to show in startup buffer or an association list of the form
   ;; `(list-type . list-size)`. If nil then it is disabled. Possible values for
   ;; list-type are: `recents' `recents-by-project' `bookmarks' `projects'
@@ -84,7 +90,7 @@ settings related to the home buffer and startup.
 
   ;; The minimum delay in seconds between number key presses.
   ;; (default 0.4)
-  dotspacemacs-startup-buffer-multi-digit-delay 0.4
+  dotspacemacs-startup-buffer-multi-digit-delay 0.3
 
   ;; If non-nil a progress bar is displayed when spacemacs is loading. This
   ;; may increase the boot time on some systems and emacs builds, set it to
@@ -111,12 +117,6 @@ settings related to the home buffer and startup.
   ;; borderless fullscreen.
   ;; (default nil)
   dotspacemacs-undecorated-at-startup nil
-
-  ;; If non-nil, show file icons for entries and headings on Spacemacs home
-  ;; buffer. This has no effect in terminal or if "all-the-icons" package or the
-  ;; font is not installed.
-  ;; (default nil)
-  dotspacemacs-startup-buffer-show-icons t
 #+END_SRC
 
 ** Buffers, Frames, and Files
@@ -344,7 +344,7 @@ settings related to key bindings and controls.
   ;; Which-key delay in seconds. The which-key buffer is the popup listing
   ;; the commands bound to the current keystroke sequence.
   ;; (default 0.4)
-  dotspacemacs-which-key-delay 0.4
+  dotspacemacs-which-key-delay 0.3
 
   ;; Which-key frame position. Possible values are `right', `bottom' and
   ;; `right-then-bottom'. right-then-bottom tries to display the frame to the
@@ -375,7 +375,7 @@ settings related to key bindings and controls.
   ;; Show the scroll bar while scrolling. The auto hide time can be configured
   ;; by setting this variable to a number.
   ;; (default t)
-  dotspacemacs-scroll-bar-while-scrolling t
+  dotspacemacs-scroll-bar-while-scrolling nil
 #+END_SRC
 
 ** Package Management and Updates
@@ -742,8 +742,8 @@ should be set before packages are loaded."
 --------------------------------------------------------------------------------
 This section contains the [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Specifying-File-Variables.html][*local variables list*]] for this org document (shown
 below). The local variables list is used to add ~org-babel-tangle~ to an
-~after-save-hook~. This means ~org-babel-tangle~ will be called automatically when
-this is saved file and the contents of all code blocks in this file will be
+~after-save-hook~. This means ~org-babel-tangle~ will be called automatically
+when this is saved file and the contents of all code blocks in this file will be
 written to to the ~init.el~ file.
 
 # Local Variables:

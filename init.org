@@ -1,4 +1,6 @@
 #+TITLE: Spacemacs Literate Configuration
+#+PROPERTY: header-args:elisp :tangle init.el
+#+STARTUP: show2levels
 
 * Preamble
 --------------------------------------------------------------------------------
@@ -729,3 +731,16 @@ configuration. Put your configuration code here, except for variables that
 should be set before packages are loaded."
 )
 #+END_SRC
+
+* Local Variables :noexport:
+--------------------------------------------------------------------------------
+This section contains the [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Specifying-File-Variables.html][*local variables list*]] for this org document (shown
+below). The local variables list is used to add ~org-babel-tangle~ to an
+~after-save-hook~. This means ~org-babel-tangle~ will be called automatically when
+this is saved file and the contents of all code blocks in this file will be
+written to to the ~init.el~ file.
+
+# Local Variables:
+# mode: org
+# eval: (add-hook 'after-save-hook #'org-babel-tangle nil t)
+# End:

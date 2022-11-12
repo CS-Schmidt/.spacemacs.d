@@ -237,7 +237,7 @@ settings related to code editing.
   ;;   :size-limit-kb 1000)
   ;; When used in a plist, `visual' takes precedence over `relative'.
   ;; (default nil)
-  dotspacemacs-line-numbers nil
+  dotspacemacs-line-numbers t
 
   ;; Code folding method. Possible values are `evil', `origami' and `vimish'.
   ;; (default 'evil)
@@ -735,6 +735,17 @@ packages are loaded, those go in the ~dotspacemacs/user-init~ function.
 This function is called at the very end of Spacemacs startup, after layer
 configuration. Put your configuration code here, except for variables that
 should be set before packages are loaded."
+  ;;; Code Editing Configuration
+  ;; ----------------------------------------------------------------
+  ;; This snippet is used to fix an issue where the line number column appears
+  ;; uneven with code folding and a high line count
+  (defun equalize-line-number-column-width ()
+    "Equalize the line number column width."
+    (setq display-line-numbers-width (length (number-to-string (line-number-at-pos (point-max))))))
+
+  ;; REVIEW: the `find-file-hook' could be too general
+  (when (equal dotspacemacs-line-numbers t)
+    (add-hook 'find-file-hook #'equalize-line-number-column-width))
 )
 #+END_SRC
 

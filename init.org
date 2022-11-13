@@ -625,12 +625,17 @@ options for configuring layers.
       ;;; Emacs Layers
       ;; ----------------------------------------------------------------
       ;; better-defaults
-      multiple-cursors
+      helpful
+      (ibuffer :variables ibuffer-group-buffers-by 'projects)
       ;; org
 
       ;;; File Tree Layers
       ;; ----------------------------------------------------------------
       treemacs
+
+      ;;; Miscellaneous Layers
+      ;; ----------------------------------------------------------------
+      multiple-cursors
 
       ;;; Programming Language Layers
       ;; ----------------------------------------------------------------
@@ -646,10 +651,10 @@ options for configuring layers.
       ;; (shell :variables
       ;;        shell-default-height 30
       ;;        shell-default-position 'bottom)
+
       ;;; Version Control Layers
       ;; ----------------------------------------------------------------
-      (git :variables
-          git-enable-magit-todos-plugin t)
+      (git :variables git-enable-magit-todos-plugin t)
       version-control
       )
 #+END_SRC

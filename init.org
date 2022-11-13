@@ -609,30 +609,49 @@ options for configuring layers.
   ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
   dotspacemacs-configuration-layer-path '()
 
-   ;; List of configuration layers to load.
-   dotspacemacs-configuration-layers
-   '(
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
-     ;; `M-m f e R' (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
-     ;; auto-completion
-     ;; better-defaults
-     emacs-lisp
-     ;; git
-     helm
-     ;; lsp
-     ;; markdown
-     multiple-cursors
-     ;; org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     ;; spell-checking
-     ;; syntax-checking
-     ;; version-control
-     treemacs)
+    ;; List of configuration layers to load.
+    dotspacemacs-configuration-layers
+    '(
+      ;;; Checker Layers
+      ;; ----------------------------------------------------------------
+      ;; spell-checking
+      ;; syntax-checking
+
+      ;;; Completion Layers
+      ;; ----------------------------------------------------------------
+      ;; auto-completion
+      helm
+
+      ;;; Emacs Layers
+      ;; ----------------------------------------------------------------
+      ;; better-defaults
+      multiple-cursors
+      ;; org
+
+      ;;; File Tree Layers
+      ;; ----------------------------------------------------------------
+      treemacs
+
+      ;;; Programming Language Layers
+      ;; ----------------------------------------------------------------
+      emacs-lisp
+
+      ;;; Other Language Layers
+      ;; ----------------------------------------------------------------
+      ;; markdown
+
+      ;;; Tool Layers
+      ;; ----------------------------------------------------------------
+      ;; lsp
+      ;; (shell :variables
+      ;;        shell-default-height 30
+      ;;        shell-default-position 'bottom)
+      ;;; Version Control Layers
+      ;; ----------------------------------------------------------------
+      (git :variables
+          git-enable-magit-todos-plugin t)
+      version-control
+      )
 #+END_SRC
 
 ** Package Management

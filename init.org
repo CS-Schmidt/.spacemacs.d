@@ -768,8 +768,16 @@ should be set before packages are loaded."
     (setq display-line-numbers-width (length (number-to-string (line-number-at-pos (point-max))))))
 
   ;; REVIEW: the `find-file-hook' could be too general
-  (when (equal dotspacemacs-line-numbers t)
+  (when dotspacemacs-line-numbers
     (add-hook 'find-file-hook #'equalize-line-number-column-width))
+
+  ;;; Magit Configuration
+  ;; ----------------------------------------------------------------
+  ;; The function added to the `git-commit-post-finish-hook' is used to display
+  ;; the magit process-buffer after commiting. This provides a convenient way of
+  ;; looking at any potential output from git commit hooks.
+  ;; TODO: improve this hook and the process-buffer display
+  (add-hook 'git-commit-post-finish-hook #'(lambda () (save-selected-window (magit-process-buffer))))
 )
 #+END_SRC
 

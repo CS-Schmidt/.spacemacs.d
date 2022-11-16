@@ -778,6 +778,18 @@ should be set before packages are loaded."
   ;; looking at any potential output from git commit hooks.
   ;; TODO: improve this hook and the process-buffer display
   (add-hook 'git-commit-post-finish-hook #'(lambda () (save-selected-window (magit-process-buffer))))
+
+  ;;; Styling
+  ;; ----------------------------------------------------------------
+  ;; The `default-frame-alist' variable is a list of frame parameters which
+  ;; control the default appearance and behaviour of all frames in Emacs. By
+  ;; changing the value of the `alpha' parameter we can give each frame a
+  ;; transparency effect.
+  (add-to-list 'default-frame-alist '(alpha 92 92))
+
+  ;; Adds column ruler at an 80 character width in all buffers with a
+  ;; "prog-type" major modes.
+  (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 )
 #+END_SRC
 

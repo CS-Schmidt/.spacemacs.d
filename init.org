@@ -790,6 +790,20 @@ should be set before packages are loaded."
   ;; Adds column ruler at an 80 character width in all buffers with a
   ;; "prog-type" major modes.
   (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+
+  ;; The `spacemacs-visual' layer includes `hl-todo' for highlighting TODO and
+  ;; other important comment keywords. The code below tells `hl-todo' what
+  ;; special comments it should look for and how they should appear.
+  (with-eval-after-load 'hl-todo
+    (customize-set-variable 'hl-todo-highlight-punctuation ":")
+    (customize-set-variable 'hl-todo-keyword-faces '(("TODO" warning bold)
+                                                     ("FIXME" error bold)
+                                                     ("HACK" font-lock-constant-face bold)
+                                                     ("REVIEW" font-lock-keyword-face bold)
+                                                     ("DEPRECATED" font-lock-doc-face bold)
+                                                     ("NOTE" success bold)
+                                                     ("BUG" error bold)
+                                                     ("XXX" font-lock-constant-face bold))))
 )
 #+END_SRC
 

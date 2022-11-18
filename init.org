@@ -631,7 +631,7 @@ options for configuring layers.
 
       ;;; File Tree Layers
       ;; ----------------------------------------------------------------
-      treemacs
+      (treemacs :variables treemacs-use-git-mode 'deferred)
 
       ;;; Miscellaneous Layers
       ;; ----------------------------------------------------------------
@@ -804,6 +804,13 @@ should be set before packages are loaded."
                                                      ("NOTE" success bold)
                                                      ("BUG" error bold)
                                                      ("XXX" font-lock-constant-face bold))))
+
+  ;;; Treemacs configuration
+  ;; ----------------------------------------------------------------
+  ;; This snippet prevents projects in the treemacs buffer from displaying
+  ;; gitignored files.
+  (with-eval-after-load 'treemacs
+    (add-to-list 'treemacs-pre-file-insert-predicates #'treemacs-is-file-git-ignored?))
 )
 #+END_SRC
 

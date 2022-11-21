@@ -614,7 +614,7 @@ options for configuring layers.
     '(
       ;;; Checker Layers
       ;; ----------------------------------------------------------------
-      ;; spell-checking
+      spell-checking
       ;; syntax-checking
 
       ;;; Completion Layers
@@ -907,6 +907,13 @@ should be set before packages are loaded."
 
   (advice-add 'org-create-formula-image :around #'org-renumber-environment)
 
+  ;;; Project Management
+  ;; ----------------------------------------------------------------
+  ;; Tell projectile about all my projects.
+  ;; NOTE: settings specific to my file system
+  (projectile-discover-projects-in-directory "~/Work/projects/" 1)
+  (projectile-discover-projects-in-directory "~/Work/reference/" 1)
+
   ;;; Styling
   ;; ----------------------------------------------------------------
   ;; The `default-frame-alist' variable is a list of frame parameters which
@@ -951,6 +958,12 @@ should be set before packages are loaded."
                 web-mode-css-indent-offset 2
                 web-mode-code-indent-offset 2
                 web-mode-attr-indent-offset 2)
+
+  ;;; Other
+  ;; ----------------------------------------------------------------
+  ;; Sets the default dictionary for the spell-checking layer. All spell
+  ;; checking is tested against the dictionary (or dictionaries) selected.
+  (setq ispell-dictionary "en_CA")
 )
 #+END_SRC
 

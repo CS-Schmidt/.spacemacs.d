@@ -642,15 +642,49 @@ options for configuring layers.
 
       ;;; Programming Language Layers
       ;; ----------------------------------------------------------------
+      (c-c++ :variables c-c++-backend 'lsp-clangd)
+      (csharp :variables csharp-backend 'lsp)
       emacs-lisp
+      java
+      (javascript :variables javascript-backend 'lsp
+                             javascript-lsp-linter nil
+                             javascript-repl 'nodejs
+                             js2-mode-show-strict-warnings nil)
+      (typescript :variables typescript-backend 'lsp
+                             typescript-lsp-linter nil)
+      (php :variables php-backend 'lsp)
+      (python :variables python-backend 'lsp)
+      shell-scripts
 
       ;;; Other Language Layers
       ;; ----------------------------------------------------------------
-      ;; markdown
+      csv
+      gpu
+      graphql
+      (html :variables css-enable-lsp t
+                       html-enable-lsp t
+                       less-enable-lsp t
+                       scss-enable-lsp t)
+      (json :variables json-backend 'lsp)
+      markdown
+      (sql :variables sql-backend 'lsp)
+      (yaml :variables yaml-enable-lsp t)
+
+      ;;; Frameworks
+      ;; ----------------------------------------------------------------
+      django
+      react
+      (svelte :variables svelte-backend 'lsp)
+      (vue :variables vue-backend 'lsp)
+
+      ;;; Utilities
+      ;; ----------------------------------------------------------------
+      dotnet
+      (ipython-notebook :variables ein-backend 'jupyter)
 
       ;;; Tool Layers
       ;; ----------------------------------------------------------------
-      ;; lsp
+      lsp
       ;; (shell :variables
       ;;        shell-default-height 30
       ;;        shell-default-position 'bottom)
@@ -891,13 +925,13 @@ should be set before packages are loaded."
   (with-eval-after-load 'hl-todo
     (customize-set-variable 'hl-todo-highlight-punctuation ":")
     (customize-set-variable 'hl-todo-keyword-faces '(("TODO" warning bold)
-                                                      ("FIXME" error bold)
-                                                      ("HACK" font-lock-constant-face bold)
-                                                      ("REVIEW" font-lock-keyword-face bold)
-                                                      ("DEPRECATED" font-lock-doc-face bold)
-                                                      ("NOTE" success bold)
-                                                      ("BUG" error bold)
-                                                      ("XXX" font-lock-constant-face bold))))
+                                                     ("FIXME" error bold)
+                                                     ("HACK" font-lock-constant-face bold)
+                                                     ("REVIEW" font-lock-keyword-face bold)
+                                                     ("DEPRECATED" font-lock-doc-face bold)
+                                                     ("NOTE" success bold)
+                                                     ("BUG" error bold)
+                                                     ("XXX" font-lock-constant-face bold))))
 
   ;;; Treemacs configuration
   ;; ----------------------------------------------------------------
@@ -905,6 +939,18 @@ should be set before packages are loaded."
   ;; gitignored files.
   (with-eval-after-load 'treemacs
     (add-to-list 'treemacs-pre-file-insert-predicates #'treemacs-is-file-git-ignored?))
+
+  ;;; Web Development Configuration
+  ;; ----------------------------------------------------------------
+  ;; This section contains a collection of settings tweaks for indentation in
+  ;; web-mode buffers.
+  (setq-default js2-basic-offset 2
+                js-indent-level 2
+                css-indent-offset 2
+                web-mode-markup-indent-offset 2
+                web-mode-css-indent-offset 2
+                web-mode-code-indent-offset 2
+                web-mode-attr-indent-offset 2)
 )
 #+END_SRC
 

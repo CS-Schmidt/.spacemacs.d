@@ -495,7 +495,7 @@ settings related to styling.
   ;; DOCUMENTATION.org for more info on how to create your own spaceline theme.
   ;; Value can be a symbol or list with additional properties.
   ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-  dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
+  dotspacemacs-mode-line-theme '(doom)
 
   ;; If non-nil unicode symbols are displayed in the mode line. If you use Emacs
   ;; as a daemon and wants unicode characters only in GUI set the value to
@@ -817,6 +817,10 @@ should be set before packages are loaded."
   ;; looking at any potential output from git commit hooks.
   ;; TODO: improve this hook and the process-buffer display
   (add-hook 'git-commit-post-finish-hook #'(lambda () (save-selected-window (magit-process-buffer))))
+
+  ;;; Mode-line Configuration
+  ;; ----------------------------------------------------------------
+  (setq doom-modeline-height 30)
 
   ;;; Org Configuration
   ;; ----------------------------------------------------------------

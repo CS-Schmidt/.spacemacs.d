@@ -630,7 +630,10 @@ options for configuring layers.
       (org :variables org-enable-appear-support t
                       org-enable-sticky-header t
                       org-enable-transclusion-support t
-                      org-enable-valign t)
+                      org-enable-valign t
+                      org-enable-roam-support t
+                      org-enable-roam-ui t
+                      org-enable-roam-protocol t)
 
       ;;; File Tree Layers
       ;; ----------------------------------------------------------------
@@ -910,6 +913,51 @@ should be set before packages are loaded."
     (apply orig-func args))
 
   (advice-add 'org-create-formula-image :around #'org-renumber-environment)
+
+  ;;; Org-roam
+  ;; ----------------------------------------------------------------
+  ;; Sets the default path to all org-roam files.
+  (customize-set-variable 'org-roam-directory (file-truename "~/PKMS/00-notes/"))
+
+  ;; The list of templates for the creation of new org-roam entries.
+  (customize-set-variable 'org-roam-capture-templates
+      '(("d" "default template" plain "%?"
+        :target (file+head "${slug}_%<%Y%m%d%H%M%S>.org"
+                            "#+title: ${title}\n#+filetags: <subject> 📝 🌰\n")
+        :unnarrowed t)))
+
+  ;; Sets the minibuffer history for org-roam nodes.
+  (setq org-roam-node-history nil)
+
+  ;; Sets the display formatting for org-roam nodes in minibuffer search.
+  (customize-set-variable 'org-roam-node-display-template (concat "${title:100}"
+                                                                  (propertize "${tags:60}" 'face 'org-tag)))
+
+  ;; (customize-set-variable 'org-tag-alist '(("📕")
+  ;;                                          ("📑")
+  ;;                                          ("📝")
+  ;;                                          ("🌲")
+  ;;                                          ("🌿")
+  ;;                                          ("🌱")
+  ;;                                          ("🌰")
+  ;;                                          ("browsers")
+  ;;                                          ("career-development")
+  ;;                                          ("computer-science")
+  ;;                                          ("css")
+  ;;                                          ("emacs-lisp")
+  ;;                                          ("data-structures-&-algorithms")
+  ;;                                          ("health-&-fitness")
+  ;;                                          ("html")
+  ;;                                          ("javascript")
+  ;;                                          ("mathematics")
+  ;;                                          ("programming-language-theory")
+  ;;                                          ("software-architecture-&-design-patterns")
+  ;;                                          ("software-engineering")
+  ;;                                          ("theory-of-computation")
+  ;;                                          ("web-development")))
+
+  ;; Enables automatic roam db sync.
+  (org-roam-db-autosync-mode)
 
   ;;; Project Management
   ;; ----------------------------------------------------------------

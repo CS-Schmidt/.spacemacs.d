@@ -721,7 +721,8 @@ options for managing packages within Spacemacs.
   ;; `dotspacemacs/user-config'. To use a local version of a package, use the
   ;; `:location' property: '(your-package :location "~/path/to/your-package/")
   ;; Also include the dependencies as they will not be resolved automatically.
-  dotspacemacs-additional-packages '(org-inline-anim-mode
+  dotspacemacs-additional-packages '(org-drill
+                                     org-inline-anim-mode
                                      org-modern
                                      org-zotxt-mode)
 
@@ -958,6 +959,53 @@ should be set before packages are loaded."
 
   ;; Enables automatic roam db sync.
   (org-roam-db-autosync-mode)
+
+  ;;; Org Drill Configuration
+  ;; ----------------------------------------------------------------
+  ;; Sets the maximum duration of an org-drill session in minutes.
+  (setq org-drill-maximum-duration 30)
+
+  ;; Sets the maximum amount of items that can be reviewed in a org-drill
+  ;; session.
+  (setq org-drill-maximum-items-per-session 40)
+
+  ;; Custom interactive function for drilling portions of my knowledge base.
+  (defun conf/org-drill ()
+    "Custom function for initiating org-drill review sessions."
+    (interactive)
+    (with-eval-after-load 'org-roam
+      (let* ((selected-drill (completing-read "Select drill topic: " '("programming"
+                                                                        "mathematics"
+                                                                        "career"
+                                                                        "interviews")))
+              (files (cond ((string-equal selected-drill "programming")
+                            (flatten-tree (org-roam-db-query [:select [file]
+                                                              :from nodes
+                                                              :inner-join tags
+                                                              :on (= nodes:id tags:node-id)
+                                                              :where (or (= tags:tag "computer-science")
+                                                                         (= tags:tag "software-engineering")
+                                                                         (= tags:tag "web-development"))])))
+                          ((string-equal selected-drill "mathematics")
+                            (flatten-tree (org-roam-db-query [:select [file]
+                                                              :from nodes
+                                                              :inner-join tags
+                                                              :on (= nodes:id tags:node-id)
+                                                              :where (= tags:tag "mathematics")])))
+                          ((string-equal selected-drill "career")
+                            (flatten-tree (org-roam-db-query [:select [file]
+                                                              :from nodes
+                                                              :inner-join tags
+                                                              :on (= nodes:id tags:node-id)
+                                                              :where (= tags:tag "career-development")])))
+                          ((string-equal selected-drill "interviews")
+                            (flatten-tree (org-roam-db-query [:select [file]
+                                                              :from nodes
+                                                              :inner-join tags
+                                                              :on (= nodes:id tags:node-id)
+                                                              :where (= tags:tag "interviews")]))))))
+        (setq 'org-drill-scope files)
+        (org-drill))))
 
   ;;; Project Management
   ;; ----------------------------------------------------------------

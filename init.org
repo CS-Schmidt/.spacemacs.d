@@ -721,7 +721,8 @@ options for managing packages within Spacemacs.
   ;; `dotspacemacs/user-config'. To use a local version of a package, use the
   ;; `:location' property: '(your-package :location "~/path/to/your-package/")
   ;; Also include the dependencies as they will not be resolved automatically.
-  dotspacemacs-additional-packages '(org-drill
+  dotspacemacs-additional-packages '(leetcode
+                                     org-drill
                                      org-inline-anim-mode
                                      org-modern
                                      zotxt)
@@ -813,6 +814,14 @@ should be set before packages are loaded."
   ;; REVIEW: the `find-file-hook' could be too general
   (when dotspacemacs-line-numbers
     (add-hook 'find-file-hook #'equalize-line-number-column-width))
+
+  ;;; LeetCode Configuration
+  ;; ----------------------------------------------------------------
+  (with-eval-after-load 'leetcode
+    (customize-set-variable 'leetcode-prefer-language "javascript")
+    (customize-set-variable 'leetcode-prefer-sql "mysql")
+    (customize-set-variable 'leetcode-save-solutions t)
+    (customize-set-variable 'leetcode-directory "~/leetcode"))
 
   ;;; Magit Configuration
   ;; ----------------------------------------------------------------

@@ -687,6 +687,8 @@ options for configuring layers.
 
       ;;; Tool Layers
       ;; ----------------------------------------------------------------
+      (docker :variables docker-dockerfile-backend 'lsp)
+      kubernetes
       lsp
       ;; (shell :variables
       ;;        shell-default-height 30

@@ -725,7 +725,7 @@ options for managing packages within Spacemacs.
   ;; Also include the dependencies as they will not be resolved automatically.
   dotspacemacs-additional-packages '(leetcode
                                      org-drill
-                                     org-inline-anim-mode
+                                     org-inline-anim
                                      org-modern
                                      zotxt)
 

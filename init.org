@@ -669,6 +669,9 @@ options for configuring layers.
                        less-enable-lsp t
                        scss-enable-lsp t)
       (json :variables json-backend 'lsp)
+      (latex :variables latex-refresh-preview t
+                        latex-build-engine 'xetex
+                        latex-view-pdf-in-split-window t)
       markdown
       (sql :variables sql-backend 'lsp)
       (yaml :variables yaml-enable-lsp t)
@@ -693,6 +696,10 @@ options for configuring layers.
       (shell :variables shell-default-shell 'vterm
                         shell-default-height 30
                         shell-default-position 'bottom)
+
+      ;;; Readers
+      ;; ----------------------------------------------------------------
+      pdf
 
       ;;; Version Control Layers
       ;; ----------------------------------------------------------------

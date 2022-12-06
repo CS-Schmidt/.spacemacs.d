@@ -857,6 +857,14 @@ should be set before packages are loaded."
   (customize-set-variable 'org-modern-table nil)
   (customize-set-variable 'org-modern-horizontal-rule nil)
 
+  ;; Org mode face customizations.
+  (customize-set-variable 'org-emphasis-alist '(("*" (:weight bold :foreground "#bb6dc4"))
+                                                ("/" (:slant italic :foreground "#2c9372"))
+                                                ("_" (:underline t))
+                                                ("=" org-verbatim verbatim)
+                                                ("~" (:foreground "#cc5279" :background "#171c21"))
+                                                ("+" (:strike-through t))))
+
   ;; This section contains a series of `org-mode-hook' calls which are
   ;; intended to enable a collection of minor modes in org buffers.
   ;; TODO: find an alternative for `org-inline-anim-mode'

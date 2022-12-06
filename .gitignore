@@ -1,6 +1,5 @@
 # Spacemacs Ignores
 .spacemacs.env
-init.el
 
 # Other Ignores
 node_modules

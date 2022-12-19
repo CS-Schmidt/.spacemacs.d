@@ -826,8 +826,7 @@ should be set before packages are loaded."
 
   ;; Prevents line wrapping in buffer displays while editing various files.
   ;; TODO: look for better hooks to disable line wrapping in a cleaner way
-  (add-hook 'prog-mode-hook #'toggle-truncate-lines)
-  (add-hook 'text-mode-hook #'toggle-truncate-lines)
+  (add-hook 'hack-local-variables-hook #'spacemacs/toggle-truncate-lines-off)
 
   ;;; LeetCode Configuration
   ;; ----------------------------------------------------------------

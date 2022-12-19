@@ -562,7 +562,7 @@ This function should only modify configuration layer settings."
                              typescript-lsp-linter nil)
       (php :variables php-backend 'lsp)
       (python :variables python-backend 'lsp)
-      shell-scripts
+      (shell-scripts :variables shell-scripts-backend nil)
 
       ;;; Other Language Layers
       ;; ----------------------------------------------------------------
